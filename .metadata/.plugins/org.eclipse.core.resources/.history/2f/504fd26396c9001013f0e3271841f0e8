@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="chapter01_begin">
+        <property name="context-root" value="chapter01_begin"/>
+    </wb-module>
+</project-modules>
