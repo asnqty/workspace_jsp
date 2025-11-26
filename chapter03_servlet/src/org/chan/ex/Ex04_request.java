@@ -16,7 +16,16 @@ public class Ex04_request extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		String query = request.getParameter("query");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		
+		System.out.println("전달된 값은 " + query + "입니다.");
+		System.out.println("전달된 이름은 " + name + "입니다.");
+		System.out.println("전달된 나이는 " + age + "입니다.");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

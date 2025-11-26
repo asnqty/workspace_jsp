@@ -1,7 +1,13 @@
 INDEX VERSION 1.131
-C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2451989967.index
-\chapter01_begin\src
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3814564933.index
+\chapter04_action_bean\src
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\806032250.index
+\chapter03_servlet\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3605473280.index
 \chapter02_jsp\src
-C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\806032250.index
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1830563176.index
+\chapter05_cookie\src
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2451989967.index
+\chapter01_begin\src
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3627545670.index
 \chapter03_servlet\src
