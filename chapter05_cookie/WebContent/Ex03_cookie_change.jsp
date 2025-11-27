@@ -28,6 +28,7 @@
 			cookieBox[a].setValue(URLEncoder.encode("마이클 조던", "utf-8"));
 			cookieBox[a].setMaxAge(60 * 60 * 24 * 15);
 			response.addCookie(cookieBox[a]);%>
+			<!-- 그냥 out.print를 해도 됨 -->
 			쿠키 값을 변경하였습니다.
 		<%}
 	 %>
