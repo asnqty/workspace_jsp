@@ -55,9 +55,11 @@
 								<td><input type="number" name="age" value="${vo.age}" style="width: 30px"></td>
 								<td><input type="text" name="addr" value="${vo.addr}" style="width: 30px"></td>
 								<td>${vo.reg_date}</td>
-								<td colspan="7"><input type="button" value="수정하기" onclick="update(this.form)"> </td>
 								<input type="hidden" name="id" value="${vo.id}">
 								<input type="hidden" name="pw" value="${vo.pw}">
+							</tr>
+							<tr style="background-color: lightseagreen;">
+								<td colspan="7"><input type="button" value="수정하기" onclick="update(this.form)"> </td>
 							</tr>
 					</c:otherwise>
 				</c:choose>

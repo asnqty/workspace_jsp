@@ -86,14 +86,51 @@
 </body>
 <script type="text/javascript">
 	function view_all(){
+		// view_all.jsp로 이동
+		location.href = 'view_all.jsp';
 	}
 	function view_one(f){
+		// id 입력 검증 후 view_one.jsp로 이동
+		// 해당 id 데이터만을 출력
+		// 방법1
+		location.href = 
+			'view_one.jsp?id=' + f.id.value;
+		// 방법2
+		/* if(!f.id.value){
+			alert('아이디를 입력하세요.');
+			return;
+		}
+		f.action = 'view_one.jsp';
+		f.submit(); */
 	}
 	function insert(f){
+		// 모든 내용 입력 검증 후 insert.jsp로 submit
+		if(!f.id.value || !f.pw.value || !f.name.value ||
+			!f.age.value || !f.addr.value){
+			alert('모든 내용을 입력하세요.');
+			return;
+		}
+		f.action = 'insert.jsp';
+		f.submit();
 	}
 	function remove(f){
+		// id와 pw 검증해서 맞으면 삭제
+		// remove.jsp로 이동
+		// 삭제 후 view_all.jsp로 이동
+		if(!f.id.value || !f.pw.value){
+			alert('아이디 및 비밀번호를 입력하세요.');
+			return;
+		}
+		f.action = 'remove.jsp';
+		f.submit();
 	}
 	function update_page(f){
+		if(!f.id.value || !f.pw.value){
+			alert('아이디 및 비밀번호를 입력하세요.');
+			return;
+		}
+		f.action = 'update_page.jsp';
+		f.submit();
 	}
 </script>
 </html>
