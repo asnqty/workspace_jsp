@@ -24,8 +24,44 @@ public class BDaoImpl implements BDao{
 		return sqlsession;
 	}
 	
+	// 모든 게시글 보기
 	@Override
 	public List<BVO> getList() {
 		return getSqlSession().selectList("bbs_select_all");
 	}
+	
+	// 게시글 작성
+	@Override
+	public int getInsertBBS(BVO bvo) {
+		int result = getSqlSession().insert("insert_bbs", bvo);
+		if(result > 0) {
+			getSqlSession().commit();
+		}
+		return result;
+	}
+	
+	// 게시글 내용 보기
+	@Override
+	public BVO getBBS(int b_idx) {
+		return getSqlSession().selectOne("bbs_by_idx", b_idx);
+	}
+	
+	// 게시글 삭제
+	@Override
+	public int removeBBS(int b_idx) {
+		int result = getSqlSession().delete("delete_bbs", b_idx);
+		if(result > 0) {
+			getSqlSession().commit();
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+

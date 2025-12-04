@@ -26,3 +26,12 @@ function insert(f){
     f.action = 'BBSController'
     f.submit();
 }
+// 게시글 수정
+function updatePage(){
+}
+// 게시글 삭제 함수
+function removeBBS(b_idx){
+    if(confirm('해당 게시글을 삭제하시겠습니까?')){
+		location.href = 'BBSController?cmd=remove&b_idx='+b_idx;
+	}
+}

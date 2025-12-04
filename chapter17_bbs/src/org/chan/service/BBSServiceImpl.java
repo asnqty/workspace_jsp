@@ -9,8 +9,27 @@ import org.chan.vo.BVO;
 public class BBSServiceImpl implements BBSService{
 	private BDao bdao = BDaoImpl.getInstance();
 	
+	// 모든 게시글 보기
 	@Override
 	public List<BVO> getList() {
 		return bdao.getList();
+	}
+	
+	// 게시글 작성
+	@Override
+	public int getInsertBBS(BVO bvo) {
+		return bdao.getInsertBBS(bvo);
+	}
+	
+	// 게시글 내용 보기
+	@Override
+	public BVO getBBS(int b_idx) {
+		return bdao.getBBS(b_idx);
+	}
+	
+	// 게시글 삭제
+	@Override
+	public int removeBBS(int b_idx) {
+		return bdao.removeBBS(b_idx);
 	}
 }
