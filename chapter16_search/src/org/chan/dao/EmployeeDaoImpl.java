@@ -1,6 +1,7 @@
 package org.chan.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.chan.mybatis.config.DBService;
@@ -29,5 +30,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public List<EmployeeVO> getAll() {
 		return getSqlSession().selectList("select_all");
+	}
+	@Override
+	public List<EmployeeVO> getDepatrmentId(String department_id) {
+		return getSqlSession().selectList("select_department_id", department_id);
+	}
+	@Override
+	public List<EmployeeVO> getDynamic(Map<String, String> map) {
+		return getSqlSession().selectList("select_dynamic", map);
 	}
 }

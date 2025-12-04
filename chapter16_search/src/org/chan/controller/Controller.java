@@ -1,7 +1,9 @@
 package org.chan.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,6 +50,25 @@ public class Controller extends HttpServlet {
 			request.setAttribute("list", list);
 			// 응답 페이지 경로 저장
 			path = "allList.jsp";
+			break;
+		
+		case "deptList" :
+			String department_id = request.getParameter("department_id");
+			list = service.getDepatrmentId(department_id);
+			request.setAttribute("list", list);
+			request.setAttribute("department_id", department_id);
+			path = "deptList.jsp";
+			break;
+		
+		case "dynamicList" :
+			String key = request.getParameter("key");
+			String value = request.getParameter("value");
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("key", key);
+			map.put("value", value);
+			list = service.getDynamic(map);
+			request.setAttribute("list", list);
+			path = "dynamicList.jsp";
 			break;
 		
 		// 단순 화면 이동 --------------
