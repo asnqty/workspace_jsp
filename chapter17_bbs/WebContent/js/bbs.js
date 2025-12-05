@@ -38,10 +38,12 @@ function updatePage(){
 }
 // 게시글 수정
 function update(f){
-    if(f.content.value == ''){
+    if(f.title.value == ''){
         alert("제목은 필수로 입력해야 합니다.");
         f.title.focus();
         return;
+	}
+	if(f.content.value == ''){
         alert("내용은 필수로 입력해야 합니다.");
         f.content.focus();
         return;
