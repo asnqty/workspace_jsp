@@ -23,6 +23,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete_bbs">
 	 	DELETE FROM bbs_t WHERE b_idx = #{b_idx}
 	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="update_bbs" parameterType="org.chan.vo.BVO">
+		UPDATE bbs_t SET title = #{title}, content = #{content}, filename = #{filename} WHERE b_idx = #{b_idx}
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="update_hit" parameterType="org.chan.vo.BVO">
+		UPDATE bbs_t SET hit = #{hit} WHERE b_idx = #{b_idx} 
+	</update>
 </mapper>
 
 

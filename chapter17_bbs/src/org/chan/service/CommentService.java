@@ -1,5 +1,7 @@
 package org.chan.service;
 
-public interface CommentService {
+import org.chan.vo.CVO;
 
+public interface CommentService {
+	public int insertComment(CVO cvo);
 }

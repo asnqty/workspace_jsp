@@ -1,13 +1,23 @@
 package org.chan.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Inet4Address;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/COMMENTController")
+import org.chan.service.CommentService;
+import org.chan.service.CommentServiceImpl;
+import org.chan.vo.CVO;
+import org.json.simple.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@WebServlet("/CommentController")
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -16,7 +26,40 @@ public class CommentController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		// 분기 판단 cmd
+		String cmd = request.getParameter("cmd");
+		
+		// 비동기 처리를 위한 객체들
+		ObjectMapper objectMapper = null;	// JSON과 java 객체를 변환
+		String jsonString = null;	// JSON으로 직렬화 된 데이터를 담는 용도
+		PrintWriter out = response.getWriter();	// 응답 객체
+		JSONObject obj = new JSONObject();	// 응답으로 보내줄 객체
+		
+		// DB 데이터를 다루기 위한 객체들
+		CVO cvo = null;
+		CommentService cservice = new CommentServiceImpl();
+		
+		switch(cmd) {
+		case "insertComment" :
+			cvo = new CVO();
+			cvo.setWriter(request.getParameter("writer"));
+			cvo.setPw(request.getParameter("pw"));
+			cvo.setContent(request.getParameter("content"));
+			cvo.setB_idx(Integer.parseInt(request.getParameter("b_idx")));
+			cvo.setIp(Inet4Address.getLocalHost().getHostAddress());
+			
+			// 메소드 insertComment(cvo)
+			// 아이디 insert_commnet
+			cservice.insertComment(cvo);
+			obj.put("result", "success");
+			break;
+		}
+		
+		out.print(obj);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

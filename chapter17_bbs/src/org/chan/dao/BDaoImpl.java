@@ -55,6 +55,26 @@ public class BDaoImpl implements BDao{
 		}
 		return result;
 	}
+	
+	// 게시글 수정
+	@Override
+	public int updateBBS(BVO bvo) {
+		int result = getSqlSession().update("update_bbs", bvo);
+		if(result > 0) {
+			getSqlSession().commit();
+		}
+		return result;
+	}
+	
+	// 조회수 증가
+	@Override
+	public int updateHit(BVO bvo) {
+		int result = getSqlSession().update("update_hit", bvo);
+		if(result > 0) {
+			getSqlSession().commit();
+		}
+		return result;
+	}
 }
 
 

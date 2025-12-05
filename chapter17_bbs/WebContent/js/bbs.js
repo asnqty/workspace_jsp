@@ -26,12 +26,26 @@ function insert(f){
     f.action = 'BBSController'
     f.submit();
 }
-// 게시글 수정
-function updatePage(){
-}
 // 게시글 삭제 함수
 function removeBBS(b_idx){
     if(confirm('해당 게시글을 삭제하시겠습니까?')){
-		location.href = 'BBSController?cmd=remove&b_idx='+b_idx;
-	}
+        location.href = 'BBSController?cmd=remove&b_idx='+b_idx;
+    }
+}
+// 게시글 수정 페이지로 이동
+function updatePage(){
+    location.href = 'BBSController?cmd=updatePage';
+}
+// 게시글 수정
+function update(f){
+    if(f.content.value == ''){
+        alert("제목은 필수로 입력해야 합니다.");
+        f.title.focus();
+        return;
+        alert("내용은 필수로 입력해야 합니다.");
+        f.content.focus();
+        return;
+    }
+    f.action = 'BBSController'
+    f.submit();
 }

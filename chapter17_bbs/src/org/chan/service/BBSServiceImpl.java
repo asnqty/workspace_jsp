@@ -32,4 +32,16 @@ public class BBSServiceImpl implements BBSService{
 	public int removeBBS(int b_idx) {
 		return bdao.removeBBS(b_idx);
 	}
+	
+	// 게시글 수정
+	@Override
+	public int updateBBS(BVO bvo) {
+		return bdao.updateBBS(bvo);
+	}
+	
+	// 조회수 증가
+	@Override
+	public int updateHit(BVO bvo) {
+		return bdao.updateHit(bvo);
+	}
 }

@@ -15,13 +15,15 @@ C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspse
 \chapter10_DBCP\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3383234375.index
 \chapter16_search\src
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1593015899.index
+\chapter17_bbs\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3896126267.index
 \chapter07_JSTL\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2451989967.index
 \chapter01_begin\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\669271864.index
 \chapter17_bbs\src
-C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1593015899.index
+C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1979649567.index
 \chapter17_bbs\src
 C:\dev\workspace\workspace_jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3627545670.index
 \chapter03_servlet\src

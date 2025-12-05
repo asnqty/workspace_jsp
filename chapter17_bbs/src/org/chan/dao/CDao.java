@@ -1,5 +1,7 @@
 package org.chan.dao;
 
-public interface CDao {
+import org.chan.vo.CVO;
 
+public interface CDao {
+	public int insertComment(CVO cvo);
 }
