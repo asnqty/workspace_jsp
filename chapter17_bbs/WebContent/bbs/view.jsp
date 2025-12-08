@@ -84,7 +84,22 @@
 		
 		<br/><hr/><br/>
 		<!-- 댓글 출력 폼 -->
-		
+		<form >
+			<table class="viewComment">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>작성자</th>
+						<th>내용</th>
+						<th>작성일</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody id="commBody">
+				</tbody>
+			</table>
+		</form>
+			
 	</div>
 
 </body>

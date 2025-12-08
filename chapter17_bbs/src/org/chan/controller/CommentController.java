@@ -3,6 +3,7 @@ package org.chan.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Inet4Address;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,6 +55,24 @@ public class CommentController extends HttpServlet {
 			// 메소드 insertComment(cvo)
 			// 아이디 insert_commnet
 			cservice.insertComment(cvo);
+			obj.put("result", "success");
+			break;
+			
+		// 댓글 출력
+		case "commList" :
+			int b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			List<CVO> cList = cservice.getCommList(b_idx);
+			// java에서 javascript 영역으로 데이터를 보내기에 json 타입으로 파싱해서 보냄
+			objectMapper = new ObjectMapper();
+			jsonString = objectMapper.writeValueAsString(cList);
+			
+			obj.put("cList", jsonString);
+			break;
+			
+		// 댓글 삭제
+		case "removeComm" :
+			int c_idx = Integer.parseInt(request.getParameter("c_idx"));
+			cservice.removeComm(c_idx);
 			obj.put("result", "success");
 			break;
 		}

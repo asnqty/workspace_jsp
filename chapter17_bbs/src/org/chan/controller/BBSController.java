@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.chan.model.Criteria;
 import org.chan.model.FileDownload;
 import org.chan.service.BBSService;
 import org.chan.service.BBSServiceImpl;
@@ -53,16 +54,38 @@ public class BBSController extends HttpServlet {
 		int b_idx;
 		String open = null;	// 세션 정보 저장
 		
+		// 페이징을 위한 cri 파라미터 변수
+		String pageNum = "";
+		String amount = "";
+		int parsePageNum = 0;
+		int parseAmount = 0;
+		
 		switch (cmd) {
 		// 모든 게시글 보기
 		case "allList" :
-			
+			// 조회수를 증가시키는 변수
 			open = (String)session.getAttribute("open");
 			if(open != null) {
 				session.removeAttribute("open");
 			}
 			
-			list = bservice.getList();
+			pageNum = request.getParameter("pageNum");
+			amount = request.getParameter("amount");
+			
+			if(pageNum != null && amount != null) {
+				// 파라미터를 잘 전달 받으면 적용
+				parsePageNum = Integer.parseInt(pageNum);
+				parseAmount = Integer.parseInt(amount);
+			}else {
+				// 파라미터를 전달 받지 못하면 기본 값으로 초기화
+				parsePageNum = 1;
+				parseAmount = 5;
+			}
+			Criteria cri = new Criteria(parsePageNum, parseAmount);
+			
+//			list = bservice.getList();
+			list = bservice.getListWithPaging(cri);
+			
 			request.setAttribute("list", list);
 			path = "bbs/allList.jsp";
 			break;

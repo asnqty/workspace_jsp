@@ -5,8 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.chan.mybatis.mapper.bbs">
 	<!-- 모든 게시글 보기 -->
-	<select id="bbs_select_all" resultType="org.chan.vo.BVO">
+<!--	<select id="bbs_select_all" resultType="org.chan.vo.BVO">
 		SELECT * FROM bbs_t ORDER BY b_idx DESC
+	</select> -->
+		
+	<select id="bbs_select_all_with_paging" resultType="org.chan.vo.BVO">
+		<![CDATA[
+			SELECT b_idx, writer, title, hit, reg_date 
+			FROM
+				(SELECT ROWNUM rn, a.* 
+				FROM 
+					(SELECT b_idx, writer, title, hit, reg_date FROM bbs_t ORDER BY b_idx DESC) a 
+				WHERE ROWNUM <= #{pageNum} * #{amount})
+			WHERE rn > (#{pageNum}-1) * #{amount}
+		]]>
 	</select>
 	
 	<!-- 게시글 작성 -->
@@ -34,9 +46,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE bbs_t SET hit = #{hit} WHERE b_idx = #{b_idx} 
 	</update>
 </mapper>
-
-
-
-
-
-

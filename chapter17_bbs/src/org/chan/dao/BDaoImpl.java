@@ -3,6 +3,7 @@ package org.chan.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.chan.model.Criteria;
 import org.chan.mybatis.config.DBService;
 import org.chan.vo.BVO;
 
@@ -25,9 +26,13 @@ public class BDaoImpl implements BDao{
 	}
 	
 	// 모든 게시글 보기
+//	@Override
+//	public List<BVO> getList() {
+//		return getSqlSession().selectList("bbs_select_all");
+//	}
 	@Override
-	public List<BVO> getList() {
-		return getSqlSession().selectList("bbs_select_all");
+	public List<BVO> getListWithPaging(Criteria cri) {
+		return getSqlSession().selectList("bbs_select_all_with_paging", cri);
 	}
 	
 	// 게시글 작성

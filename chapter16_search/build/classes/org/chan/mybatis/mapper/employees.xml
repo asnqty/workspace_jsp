@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.chan.mybatis.mapper.employees">
+	 <select id="select_all" resultType="org.chan.vo.EmployeeVO">
+	 	SELECT * FROM employees ORDER BY EMPLOYEE_ID
+	 </select>
+	 <select id="select_department_id" resultType="org.chan.vo.EmployeeVO" parameterType="String">
+	 	SELECT * FROM employees WHERE DEPARTMENT_ID=#{department_id} ORDER BY EMPLOYEE_ID
+	 </select>
+	 <select id="select_dynamic" resultType="org.chan.vo.EmployeeVO" parameterType="Map">
+	 	SELECT * FROM employees WHERE
+	 		<choose>
+	 			<when test="key==1">employee_id = #{value}</when>
+	 			<when test="key==2">first_name = #{value}</when>
+	 			<when test="key==3">department_id = #{value}</when>
+	 		</choose>
+	 </select>
+</mapper>
+
+
+
+
+
+

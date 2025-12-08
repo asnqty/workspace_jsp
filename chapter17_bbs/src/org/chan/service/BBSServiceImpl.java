@@ -4,15 +4,20 @@ import java.util.List;
 
 import org.chan.dao.BDao;
 import org.chan.dao.BDaoImpl;
+import org.chan.model.Criteria;
 import org.chan.vo.BVO;
 
 public class BBSServiceImpl implements BBSService{
 	private BDao bdao = BDaoImpl.getInstance();
 	
 	// 모든 게시글 보기
+//	@Override
+//	public List<BVO> getList() {
+//		return bdao.getList();
+//	}
 	@Override
-	public List<BVO> getList() {
-		return bdao.getList();
+	public List<BVO> getListWithPaging(Criteria cri) {
+		return bdao.getListWithPaging(cri);
 	}
 	
 	// 게시글 작성
