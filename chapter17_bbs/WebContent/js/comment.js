@@ -52,7 +52,6 @@ function showCommList(){
         .then(response => response.json())
         .then(data =>{
 			let cList = JSON.parse(data.cList);
-			console.log(cList);
 			
 			cList.forEach(cvo =>{
                 msg += `<tr>`;

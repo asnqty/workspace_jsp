@@ -35,18 +35,23 @@
     <fullyQualifiedTypeName name="org.chan.vo.EmployeeVO"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="org.chan.service.CommentService"/>
     <fullyQualifiedTypeName name="org.chan.dao.CDao"/>
     <fullyQualifiedTypeName name="org.chan.service.BBSService"/>
     <fullyQualifiedTypeName name="org.chan.service.BBSServiceImpl"/>
     <fullyQualifiedTypeName name="org.chan.dao.BDao"/>
     <fullyQualifiedTypeName name="org.chan.dao.BDaoImpl"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
     <fullyQualifiedTypeName name="java.net.Inet4Address"/>
     <fullyQualifiedTypeName name="org.chan.vo.BVO"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.chan.model.Criteria"/>
+    <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.PageData"/>
+    <fullyQualifiedTypeName name="org.chan.model.PageDTO"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MemberDaoImpl"/>
 </qualifiedTypeNameHistroy>

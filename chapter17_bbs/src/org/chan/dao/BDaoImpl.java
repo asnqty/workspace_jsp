@@ -30,9 +30,17 @@ public class BDaoImpl implements BDao{
 //	public List<BVO> getList() {
 //		return getSqlSession().selectList("bbs_select_all");
 //	}
+	
+	// 페이징 게시글
 	@Override
 	public List<BVO> getListWithPaging(Criteria cri) {
 		return getSqlSession().selectList("bbs_select_all_with_paging", cri);
+	}
+	
+	// 전체 게시글 수 가져오기
+	@Override
+	public int getTotalRecordCount() {
+		return getSqlSession().selectOne("total_count_of_bbs");
 	}
 	
 	// 게시글 작성

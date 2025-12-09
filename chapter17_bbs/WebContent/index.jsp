@@ -10,7 +10,7 @@
 
 </body>
 <script type="text/javascript">
-	let sendData = 'cmd=allList&pageNum=1&amount=5'
+	let sendData = 'cmd=allList'
 	location.href = 'BBSController?' + sendData;
 </script>
 </html>

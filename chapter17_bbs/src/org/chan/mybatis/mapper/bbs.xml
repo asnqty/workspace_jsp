@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="org.chan.mybatis.mapper.bbs">
 	<!-- 모든 게시글 보기 -->
@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM bbs_t ORDER BY b_idx DESC
 	</select> -->
 		
+	<!-- 페이징 게시글 -->
 	<select id="bbs_select_all_with_paging" resultType="org.chan.vo.BVO">
 		<![CDATA[
 			SELECT b_idx, writer, title, hit, reg_date 
@@ -19,6 +20,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				WHERE ROWNUM <= #{pageNum} * #{amount})
 			WHERE rn > (#{pageNum}-1) * #{amount}
 		]]>
+	</select>
+	
+	<!-- 게시글 전체 수 가져오기 -->
+	<select id="total_count_of_bbs" resultType="int">
+		SELECT COUNT(b_idx) FROM bbs_t
 	</select>
 	
 	<!-- 게시글 작성 -->

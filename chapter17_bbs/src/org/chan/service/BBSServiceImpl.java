@@ -15,9 +15,17 @@ public class BBSServiceImpl implements BBSService{
 //	public List<BVO> getList() {
 //		return bdao.getList();
 //	}
+	
+	// 페이징 게시글
 	@Override
 	public List<BVO> getListWithPaging(Criteria cri) {
 		return bdao.getListWithPaging(cri);
+	}
+	
+	// 전체 게시글 수 가져오기
+	@Override
+	public int getTotalRecordCount() {
+		return bdao.getTotalRecordCount();
 	}
 	
 	// 게시글 작성

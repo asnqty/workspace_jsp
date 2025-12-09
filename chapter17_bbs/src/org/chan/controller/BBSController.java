@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.chan.model.Criteria;
 import org.chan.model.FileDownload;
+import org.chan.model.PageDTO;
 import org.chan.service.BBSService;
 import org.chan.service.BBSServiceImpl;
 import org.chan.vo.BVO;
@@ -59,6 +60,7 @@ public class BBSController extends HttpServlet {
 		String amount = "";
 		int parsePageNum = 0;
 		int parseAmount = 0;
+		Criteria cri = new Criteria();
 		
 		switch (cmd) {
 		// 모든 게시글 보기
@@ -81,12 +83,25 @@ public class BBSController extends HttpServlet {
 				parsePageNum = 1;
 				parseAmount = 5;
 			}
-			Criteria cri = new Criteria(parsePageNum, parseAmount);
 			
+			cri.setPageNum(parsePageNum);
+			cri.setAmount(parseAmount);
+			
+			// 페에징 게시글 수 가져오기
 //			list = bservice.getList();
 			list = bservice.getListWithPaging(cri);
 			
+			// 전체 게시글 수 가져오기
+			int total = bservice.getTotalRecordCount();
+			// ID : total_count_of_bbs
+			
+			// pateDTO 객체 생성
+			PageDTO pdto = new PageDTO(cri, total);
+			
+			// 게시글 및 페이징 객체를 request객체로 전달
 			request.setAttribute("list", list);
+			request.setAttribute("pageMaker", pdto);
+			
 			path = "bbs/allList.jsp";
 			break;
 		
@@ -153,7 +168,9 @@ public class BBSController extends HttpServlet {
 			b_idx = Integer.parseInt(request.getParameter("b_idx"));
 			bservice.removeBBS(b_idx);
 			isForward = false;
-			path = "BBSController?cmd=allList";
+			parsePageNum = Integer.parseInt(request.getParameter("pageNum"));
+			parseAmount = Integer.parseInt(request.getParameter("amount"));
+			path = "BBSController?cmd=allList" + "&pageNum=" + parsePageNum + "&amount=" + parseAmount;
 			break;
 			
 		// 게시글 수정 페이지로 이동
@@ -194,7 +211,10 @@ public class BBSController extends HttpServlet {
 			}
 			bservice.updateBBS(bvo);
 			isForward = false;
-			path = "BBSController?cmd=view&b_idx=" + bvo.getB_idx();
+			
+			parsePageNum = Integer.parseInt(request.getParameter("pageNum"));
+			parseAmount = Integer.parseInt(request.getParameter("amount"));
+			path = "BBSController?cmd=view&b_idx=" + bvo.getB_idx() + "&pageNum=" + parsePageNum + "&amount=" + parseAmount;
 			break;
 			
 		// 파일 다운로드
