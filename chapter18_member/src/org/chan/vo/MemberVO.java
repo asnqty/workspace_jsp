@@ -7,17 +7,17 @@ public class MemberVO {
 	private String mId;
 	private String mPw;
 	private String mName;
-	private String mEail;
+	private String mEmail;
 	private Date mRegDate;
 	
 	public MemberVO() {}
 
-	public MemberVO(int m_idx, String mId, String mPw, String mName, String mEail, Date mRegDate) {
+	public MemberVO(int m_idx, String mId, String mPw, String mName, String mEmail, Date mRegDate) {
 		this.m_idx = m_idx;
 		this.mId = mId;
 		this.mPw = mPw;
 		this.mName = mName;
-		this.mEail = mEail;
+		this.mEmail = mEmail;
 		this.mRegDate = mRegDate;
 	}
 
@@ -53,12 +53,12 @@ public class MemberVO {
 		this.mName = mName;
 	}
 
-	public String getmEail() {
-		return mEail;
+	public String getmEmail() {
+		return mEmail;
 	}
 
-	public void setmEail(String mEail) {
-		this.mEail = mEail;
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
 	}
 
 	public Date getmRegDate() {
