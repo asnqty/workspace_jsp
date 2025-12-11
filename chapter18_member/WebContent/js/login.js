@@ -28,6 +28,7 @@ document.querySelectorAll("button").forEach(btn =>{
 // 로그인 함수
 function login(){
   // 1. 아이디 및 비밀번호 빈 값 검증
+  // 최근엔 보안때문에 법으로 아이디나 비밀번호중 무슨 값이 잘못 됐는지 명확하게 알려줘선 안됨
   // 아이디가 mId인 input의 값 가져오기
   let mId = f.mId;
 
@@ -52,32 +53,40 @@ function login(){
   let formData = new FormData(f);
   let jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
 
+  /* 
+  const data ={
+    cmd : 'asdf',
+    mid : 'dadsf'
+  }
+  JSON.stringfy(data);
+  처럼 객체를 JSON 타입으로 바꾸는 방법을 더 자주 사용함
+  */
+
   // 컨트롤러로 아이디와 비밀번호와 cmd가 담긴 json 객체를 보냄 
   fetch('MemberAsyncController', {
      	method : 'POST',
      	// body = 실어 보낼 데이터
      	body : jsonData,
-		// headers = 요청에 대한 추가 정보
-      	headers : {
-        	'Content-type' : 'application/json; charset=UTF-8'
-      	}
+		   // headers = 요청에 대한 추가 정보
+    	headers : {
+        'Content-type' : 'application/json; charset=UTF-8'
+      }
 	})
+    // 3. 정보가 있으면 
+    //  1) 쿼리 실행 결과를 세션에 저장 속성 이름 = "member"
+    //  2) obj.put("result", "success")
+    // 4. 정보가 없으면
+    //  1) obj.put("result", "fail")
     .then(response => response.json())
     .then(data =>{
       // 아이디와 비밀번호가 일치하는 회원이 존재하여 success를 리턴 받으면 실행되는 함수
       if(data.result === "success"){
-		console.log("성공");
+			location.href = `MemberController?cmd=mainPage`;
       }
       // 아이디와 비밀번호가 일치하는 회원이 존재하지 않아 fail을 리턴 받으면 실행되는 함수
       else if(data.result === "fail"){
-		console.log("실패");
+		    alert("일치하는 회원 정보가 없습니다.");
       }
     })  
     .catch(err => console.log(err))
-
-  // 3. 정보가 있으면 
-  //  1) 쿼리 실행 결과를 세션에 저장 속성 이름 = "member"
-  //  2) obj.put("result", "success")
-  // 4. 정보가 없으면
-  //  1) obj.put("result", "fail")
 }

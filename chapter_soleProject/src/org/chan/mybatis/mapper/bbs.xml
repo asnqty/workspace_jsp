@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.chan.mybatis.mapper.bbs">
+	
+	<!-- 페이징 게시글 가져오기 -->
+	<select id="get_list_with_paging" resultType="org.chan.vo.BVO">
+		<![CDATA[
+			SELECT b_idx, writer, title, hit, reg_date 
+			FROM
+				(SELECT ROWNUM rn, a.* 
+				FROM 
+					(SELECT b_idx, writer, title, hit, reg_date FROM bbs_t ORDER BY b_idx DESC) a 
+				WHERE ROWNUM <= #{pageNum} * #{amount})
+			WHERE rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+
+	<!-- 전체 게시글 수 파악 -->
+	<select id="get_total_count" resultType="int">
+		SELECT COUNT(*) FROM project_bbs_t
+	</select>
+</mapper>

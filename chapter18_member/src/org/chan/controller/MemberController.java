@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
@@ -46,6 +47,12 @@ public class MemberController extends HttpServlet {
 			// cmd가 joinPage일 경우 실행될 코드
 			case "joinPage" :
 				path = "member/joinPage.jsp";
+				break;
+			// cmd가 logout일 경우 실행될 코드
+			case "logout":
+				HttpSession session = request.getSession();
+				session.removeAttribute("member");
+				path = "index.jsp";
 				break;
 		}
 		

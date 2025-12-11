@@ -19,6 +19,10 @@ document.querySelectorAll("button").forEach(btn =>{
     else if(type === 'joinBtn'){
       sendData = 'cmd=joinPage';
     }
+    // id가 logoutBtn인 버튼의 sendData에 데이터 담기
+    else if(type === 'logoutBtn'){
+      sendData = 'cmd=logout  ';
+    }
 
     // 버튼을 눌렀을 때 sendData의 데이터를 갖고 controller로 이동하는 링크 
     location.href = '/chapter18_member/MemberController?' + sendData;

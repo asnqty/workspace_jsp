@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.chan.db.DBConnect"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="javax.naming.Context"/>
-    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
-    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
     <fullyQualifiedTypeName name="org.chan.mybatis.DBService"/>
@@ -31,21 +23,14 @@
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="org.chan.service.CommentService"/>
-    <fullyQualifiedTypeName name="org.chan.dao.CDao"/>
     <fullyQualifiedTypeName name="org.chan.service.BBSService"/>
     <fullyQualifiedTypeName name="org.chan.service.BBSServiceImpl"/>
-    <fullyQualifiedTypeName name="org.chan.dao.BDao"/>
-    <fullyQualifiedTypeName name="org.chan.dao.BDaoImpl"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
     <fullyQualifiedTypeName name="java.net.Inet4Address"/>
     <fullyQualifiedTypeName name="org.chan.vo.BVO"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.chan.model.Criteria"/>
     <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.PageData"/>
     <fullyQualifiedTypeName name="org.chan.model.PageDTO"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="org.chan.dao.MemberDao"/>
     <fullyQualifiedTypeName name="org.chan.dao.MemberDaoImpl"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
@@ -58,6 +43,21 @@
     <fullyQualifiedTypeName name="org.json.simple.parser.ParseException"/>
     <fullyQualifiedTypeName name="org.chan.service.MemberServiceImpl"/>
     <fullyQualifiedTypeName name="org.chan.service.MemberService"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="org.chan.vo.MemberVO"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="org.chan.dao.BDao"/>
+    <fullyQualifiedTypeName name="org.chan.dao.BDaoImpl"/>
+    <fullyQualifiedTypeName name="org.chan.service.CService"/>
+    <fullyQualifiedTypeName name="org.chan.dao.CDao"/>
+    <fullyQualifiedTypeName name="org.chan.dao.CDaoImpl"/>
+    <fullyQualifiedTypeName name="org.chan.service.MService"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MDao"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MDaoImpl"/>
+    <fullyQualifiedTypeName name="org.chan.service.BService"/>
+    <fullyQualifiedTypeName name="org.chan.service.BServiceImpl"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.chan.vo.bbsVO"/>
+    <fullyQualifiedTypeName name="org.chan.model.Criteria"/>
 </qualifiedTypeNameHistroy>

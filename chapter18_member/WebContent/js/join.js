@@ -278,7 +278,7 @@ function join(){
 		// headers = 요청에 대한 추가 정보
       	headers : {
         	'Content-type' : 'application/json; charset=UTF-8'
-      	}
+      	}	
     })
     .then(response => response.json())
     .then(data =>{
