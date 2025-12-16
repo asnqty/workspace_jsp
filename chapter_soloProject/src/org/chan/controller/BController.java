@@ -8,14 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.chan.model.Criteria;
 import org.chan.model.PageDTO;
 import org.chan.service.BService;
 import org.chan.service.BServiceImpl;
-import org.chan.vo.bbsVO;
+import org.chan.vo.BVO;
 
-@WebServlet("/bbsController")
+@WebServlet("/BController")
 public class BController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,18 +41,24 @@ public class BController extends HttpServlet {
 		BService bservice = new BServiceImpl();
 		
 		// select한 결과가 여럿일 때 받아오기 위한 List
-		List<bbsVO> list = null;
+		List<BVO> list = null;
+		
+		// 글 번호를 받기 위한 객체
+		int b_idx;
 		
 		// paging을 위한 객체
 		String pageNum = "";
 		int parsePageNum = 0;
 		Criteria cri = new Criteria();
 		cri.setAmount(10);
+		BVO bvo = null;
+		
+		// 로그인 확인을 위한 session 객체
+		HttpSession session = request.getSession();
 		
 		switch(cmd) {
 		case "allList":
 			pageNum = request.getParameter("pageNum");
-			
 			// pageNum 값을 URL을 통해 받아왔다면 그 값을 저장
 			if(pageNum != null) {
 				parsePageNum = Integer.parseInt(pageNum);
@@ -74,10 +81,65 @@ public class BController extends HttpServlet {
 			PageDTO pdto = new PageDTO(cri, total);
 						
 			// 게시글 및 페이징 객체를 request객체로 전달
+			request.setAttribute("pageNum", parsePageNum);
 			request.setAttribute("list", list);
 			request.setAttribute("pageMaker", pdto);
 
 			path = "bbs/allList.jsp";
+			break;
+		
+		// 게시글 작성 페이지로 이동
+		case "moveInsertbbsPage":
+			path = "bbs/insertbbsPage.jsp";
+			break;
+		
+		// 게시글 작성
+		case "insertbbs":
+			bvo = new BVO();
+			bvo.setWriter(request.getParameter("writer"));
+			bvo.setTitle(request.getParameter("title"));
+			bvo.setContent(request.getParameter("content"));
+			
+			bservice.insertbbs(bvo);
+			
+			path = "BController?cmd=allList";
+			break;
+			
+		// 게시글 내용 보기
+		case "view" :
+			b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			bvo = bservice.getbbs(b_idx);
+			request.setAttribute("bvo", bvo);
+			request.setAttribute("pageNum", request.getParameter("pageNum"));
+			path = "bbs/view.jsp";
+			break;
+		
+		// 게시글 내용 수정 페이지로 이동
+		case "moveUpdatePage":
+			b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			bvo = bservice.getbbs(b_idx);
+			request.setAttribute("bvo", bvo);
+			request.setAttribute("pageNum", request.getParameter("pageNum"));
+			path = "bbs/updateBBSPage.jsp";
+			break;
+			
+		// 게시글 수정
+		case "updateBBS":
+			bvo = new BVO();
+			bvo.setB_idx(Integer.parseInt(request.getParameter("b_idx")));
+			bvo.setTitle(request.getParameter("title"));
+			bvo.setContent(request.getParameter("content"));
+			request.setAttribute("pageNum", request.getParameter("pageNum"));
+			bservice.updatebbs(bvo);
+			path = "BController?cmd=view";
+			break;
+			
+		// 게시글 삭제
+		case "deleteBBS":
+			b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			bservice.deletebbs(b_idx);
+			isForward = false;
+			path = "BController?cmd=allList";
 			break;
 		}
 		
@@ -87,6 +149,7 @@ public class BController extends HttpServlet {
 		}else {
 			response.sendRedirect(path);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

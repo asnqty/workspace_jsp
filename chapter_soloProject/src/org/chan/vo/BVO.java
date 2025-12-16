@@ -2,7 +2,7 @@ package org.chan.vo;
 
 import java.sql.Date;
 
-public class bbsVO {
+public class BVO {
 	private int b_idx;
 	private String writer;
 	private String title;
@@ -10,9 +10,9 @@ public class bbsVO {
 	private int hit;
 	private Date reg_date;
 	
-	public bbsVO() {}
+	public BVO() {}
 
-	public bbsVO(int b_idx, String writer, String title, String content, int hit, Date reg_date) {
+	public BVO(int b_idx, String writer, String title, String content, int hit, Date reg_date) {
 		this.b_idx = b_idx;
 		this.writer = writer;
 		this.title = title;

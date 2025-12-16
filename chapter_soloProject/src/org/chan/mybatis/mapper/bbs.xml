@@ -8,11 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 페이징 게시글 가져오기 -->
 	<select id="get_list_with_paging" resultType="org.chan.vo.BVO">
 		<![CDATA[
-			SELECT b_idx, writer, title, hit, reg_date 
+			SELECT b_idx, writer, title, reg_date, hit 
 			FROM
 				(SELECT ROWNUM rn, a.* 
 				FROM 
-					(SELECT b_idx, writer, title, hit, reg_date FROM bbs_t ORDER BY b_idx DESC) a 
+					(SELECT b_idx, writer, title, reg_date, hit FROM project_bbs_t ORDER BY b_idx DESC) a 
 				WHERE ROWNUM <= #{pageNum} * #{amount})
 			WHERE rn > (#{pageNum}-1) * #{amount}
 		]]>
@@ -22,4 +22,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="get_total_count" resultType="int">
 		SELECT COUNT(*) FROM project_bbs_t
 	</select>
+	
+	<!-- 게시글 작성 -->
+	<insert id="insert_bbs" parameterType="org.chan.vo.BVO">
+		INSERT INTO project_bbs_t VALUES (project_bbs_seq.nextval, #{writer}, #{title}, #{content}, 0, sysdate)
+	</insert>
+	
+	<!-- 회원이 작성한 게시글 가져오기 -->
+	<select id="get_list_with_user" parameterType="String" resultType="org.chan.vo.BVO">
+		SELECT * FROM project_bbs_t WHERE writer=#{writer} ORDER BY b_idx DESC
+	</select>
+	
+	<!-- 게시글 내용 출력 -->
+	<select id="get_bbs" parameterType="int" resultType="org.chan.vo.BVO">
+		SELECT * FROM project_bbs_t WHERE b_idx=#{b_idx}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="update_bbs" parameterType="org.chan.vo.BVO">
+		UPDATE project_bbs_t SET title=#{title}, content=#{content} WHERE b_idx=#{b_idx}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete_bbs" parameterType="int">
+		DELETE FROM project_bbs_t WHERE b_idx=#{b_idx}
+	</delete>
 </mapper>

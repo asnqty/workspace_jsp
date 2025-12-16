@@ -2,16 +2,16 @@ package org.chan.vo;
 
 import java.sql.Date;
 
-public class memberVO {
+public class MVO {
 	private int m_idx;
 	private String mId;
 	private String mPw;
 	private String mName;
 	private Date mRegDate;
 	
-	public memberVO() {}
+	public MVO() {}
 
-	public memberVO(int m_idx, String mId, String mPw, String mName, Date mRegDate) {
+	public MVO(int m_idx, String mId, String mPw, String mName, Date mRegDate) {
 		super();
 		this.m_idx = m_idx;
 		this.mId = mId;

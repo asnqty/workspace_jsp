@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-    <fullyQualifiedTypeName name="org.chan.mybatis.DBService"/>
     <fullyQualifiedTypeName name="org.chan.ex.MemberDAO"/>
     <fullyQualifiedTypeName name="org.chan.ex.MemberVO"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="org.chan.model.Today"/>
     <fullyQualifiedTypeName name="org.chan.model.Now"/>
     <fullyQualifiedTypeName name="org.chan.vo.PersonVO"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="org.chan.model.PersonAction"/>
     <fullyQualifiedTypeName name="org.chan.service.LanguageService"/>
     <fullyQualifiedTypeName name="org.chan.service.LanguageServiceImpl"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-    <fullyQualifiedTypeName name="org.chan.mybatis.config.DBService"/>
     <fullyQualifiedTypeName name="org.chan.dao.EmployeeDao"/>
     <fullyQualifiedTypeName name="org.chan.dao.EmployeeDaoImpl"/>
     <fullyQualifiedTypeName name="org.chan.service.EmployeeService"/>
@@ -28,7 +23,6 @@
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
     <fullyQualifiedTypeName name="java.net.Inet4Address"/>
-    <fullyQualifiedTypeName name="org.chan.vo.BVO"/>
     <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.PageData"/>
     <fullyQualifiedTypeName name="org.chan.model.PageDTO"/>
     <fullyQualifiedTypeName name="org.chan.dao.MemberDao"/>
@@ -44,20 +38,26 @@
     <fullyQualifiedTypeName name="org.chan.service.MemberServiceImpl"/>
     <fullyQualifiedTypeName name="org.chan.service.MemberService"/>
     <fullyQualifiedTypeName name="org.chan.vo.MemberVO"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="org.chan.dao.BDao"/>
     <fullyQualifiedTypeName name="org.chan.dao.BDaoImpl"/>
-    <fullyQualifiedTypeName name="org.chan.service.CService"/>
     <fullyQualifiedTypeName name="org.chan.dao.CDao"/>
     <fullyQualifiedTypeName name="org.chan.dao.CDaoImpl"/>
-    <fullyQualifiedTypeName name="org.chan.service.MService"/>
-    <fullyQualifiedTypeName name="org.chan.dao.MDao"/>
-    <fullyQualifiedTypeName name="org.chan.dao.MDaoImpl"/>
-    <fullyQualifiedTypeName name="org.chan.service.BService"/>
-    <fullyQualifiedTypeName name="org.chan.service.BServiceImpl"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.chan.vo.bbsVO"/>
     <fullyQualifiedTypeName name="org.chan.model.Criteria"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="org.chan.service.MServiceImpl"/>
+    <fullyQualifiedTypeName name="org.chan.service.MService"/>
+    <fullyQualifiedTypeName name="org.chan.vo.MVO"/>
+    <fullyQualifiedTypeName name="org.chan.mybatis.config.DBService"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MDaoImpl"/>
+    <fullyQualifiedTypeName name="org.chan.dao.MDao"/>
+    <fullyQualifiedTypeName name="org.chan.service.BService"/>
+    <fullyQualifiedTypeName name="org.chan.service.BServiceImpl"/>
+    <fullyQualifiedTypeName name="org.chan.service.CService"/>
+    <fullyQualifiedTypeName name="org.chan.service.CServiceImpl"/>
+    <fullyQualifiedTypeName name="org.chan.vo.BVO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

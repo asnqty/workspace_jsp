@@ -2,16 +2,16 @@ package org.chan.vo;
 
 import java.sql.Date;
 
-public class commentVO {
+public class CVO {
 	private int c_idx;
 	private String writer;
 	private String content;
 	private Date reg_date;
 	private int b_idx;
 	
-	public commentVO() {}
+	public CVO() {}
 
-	public commentVO(int c_idx, String writer, String content, Date reg_date, int b_idx) {
+	public CVO(int c_idx, String writer, String content, Date reg_date, int b_idx) {
 		this.c_idx = c_idx;
 		this.writer = writer;
 		this.content = content;
