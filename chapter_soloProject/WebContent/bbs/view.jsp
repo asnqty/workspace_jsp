@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/member/main.jsp"/> <br>
 	<div>
 		<h1>${bvo.b_idx }번 게시글</h1>
 		<form method="post">
@@ -51,7 +52,49 @@
 				</tbody>
 			</table>
 		</form>
+		
+		<c:choose>
+			<c:when test="${not empty sessionScope.mName}">
+				<form method="post">
+					<table class="insertComment">
+						<tbody>
+							<tr>
+								<th>댓글 내용</th>
+								<td colspan="3">
+									<textarea name="content" rows="3" cols="80" placeholder="댓글을 입력하세요."></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" id="btn">
+									<button id="insertCommentBtn" type="button">댓글작성</button>
+									<button id="resetCommentBtn" type="button">다시작성</button>
+									<input type="hidden" name="writer" value="${sessionScope.mName}">
+									<input type="hidden" name="b_idx" value="${bvo.b_idx }"/>  
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</c:when>
+		</c:choose>
+		
+		<form >
+			<table class="viewComment">
+				<thead>
+					<tr>
+						<th>작성자</th>
+						<th>내용</th>
+						<th>작성일</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody id="commBody">
+				</tbody>
+			</table>
+		</form>
 	</div>
 </body>
 <script type="text/javascript" src="js/bbs.js"></script>
+<script type="text/javascript" src="js/comment.js"></script>
 </html>

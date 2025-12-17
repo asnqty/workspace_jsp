@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<th>새 비밀번호</th>
-						<td><input type="newPassword" id="newmPw" name="newmPw"></td>
+						<td><input type="password" id="newmPw" name="newmPw"></td>
 					</tr>
 					<tr>
 						<th>닉네임 변경</th>

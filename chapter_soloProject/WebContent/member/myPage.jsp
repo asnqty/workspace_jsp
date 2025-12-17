@@ -43,7 +43,11 @@
 							<c:forEach varStatus="vs" var="bvo" items="${list }">
 								<tr>
 									<td>${bvo.b_idx }</td>
-									<td><a href="${bvo.b_idx}">${bvo.title }</a></td>
+									<td>
+										<a href="BController?cmd=view&b_idx=${bvo.b_idx}&pageNum=1">
+										${bvo.title }
+										</a>
+									</td>
 									<td>${bvo.writer }</td>
 									<td>${bvo.hit }</td>
 									<td>${bvo.reg_date }</td>
@@ -66,21 +70,23 @@
 				<tr>
 					<th>글 번호</th> 
 					<th>글 제목</th> 
-					<th>댓글 번호</th> 
 					<th>댓글 내용</th> 
 					<th>날짜</th> 
 				</tr>
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${not empty list}">
-							<c:forEach varStatus="vs" var="bvo" items="${list }">
+					<c:when test="${not empty clist}">
+							<c:forEach varStatus="vs" var="bcvo" items="${clist }">
 								<tr>
-									<td>${bvo.b_idx }</td>
-									<td><a href="${bvo.b_idx}">${bvo.title }</a></td>
-									<td>${bvo.writer }</td>
-									<td>${bvo.hit }</td>
-									<td>${bvo.reg_date }</td>
+									<td>${bcvo.b_idx }</td>
+									<td>
+										<a href="BController?cmd=view&b_idx=${bcvo.b_idx}&pageNum=1">
+										${bcvo.title }
+										</a>
+									</td>
+									<td>${bcvo.content }</td>
+									<td>${bcvo.reg_date }</td>
 								</tr>
 							</c:forEach>
 					</c:when>

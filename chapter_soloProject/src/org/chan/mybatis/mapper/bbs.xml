@@ -47,4 +47,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete_bbs" parameterType="int">
 		DELETE FROM project_bbs_t WHERE b_idx=#{b_idx}
 	</delete>
+	
+	<!-- 작성자를 통한 검색으로 게시글 가져오기 -->
+	<select id="search_bbs_with_writer" resultType="org.chan.vo.BVO">
+		<![CDATA[
+			SELECT b_idx, writer, title, reg_date, hit 
+			FROM
+				(SELECT ROWNUM rn, a.* 
+				FROM 
+					(SELECT b_idx, writer, title, reg_date, hit FROM project_bbs_t WHERE  writer=#{keyword} ORDER BY b_idx DESC) a 
+				WHERE ROWNUM <= #{pageNum} * #{amount})
+			WHERE rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+
+	<!-- 작성자를 통한 검색으로 게시글 수 파악 -->
+	<select id="search_bbs_with_writer_count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM project_bbs_t WHERE writer=#{keyword}
+	</select>
+	
+	<!-- 내용을 통한 검색으로 게시글 가져오기 -->
+	<select id="search_bbs_with_content" resultType="org.chan.vo.BVO">
+		<![CDATA[
+			SELECT b_idx, writer, title, reg_date, hit 
+			FROM
+				(SELECT ROWNUM rn, a.* 
+				FROM 
+					(SELECT b_idx, writer, title, reg_date, hit FROM project_bbs_t WHERE content LIKE '%' || #{keyword} || '%' ORDER BY b_idx DESC) a 
+				WHERE ROWNUM <= #{pageNum} * #{amount})
+			WHERE rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+
+	<!-- 내용을 통한 검색으로 게시글 수 파악 -->
+	<select id="search_bbs_with_content_count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM project_bbs_t WHERE content LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<!-- 제목을 통한 검색으로 게시글 가져오기 -->
+	<select id="search_bbs_with_title" resultType="org.chan.vo.BVO">
+		<![CDATA[
+			SELECT b_idx, writer, title, reg_date, hit 
+			FROM
+				(SELECT ROWNUM rn, a.* 
+				FROM 
+					(SELECT b_idx, writer, title, reg_date, hit FROM project_bbs_t WHERE title LIKE '%' || #{keyword} || '%' ORDER BY b_idx DESC) a 
+				WHERE ROWNUM <= #{pageNum} * #{amount})
+			WHERE rn > (#{pageNum}-1) * #{amount} 
+		]]>
+	</select>
+
+	<!-- 제목을 통한 검색으로 게시글 수 파악 -->
+	<select id="search_bbs_with_title_count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM project_bbs_t WHERE title LIKE '%' || #{keyword} || '%'
+	</select>
 </mapper>

@@ -56,6 +56,9 @@ public class BController extends HttpServlet {
 		// 로그인 확인을 위한 session 객체
 		HttpSession session = request.getSession();
 		
+		int total = 0;
+		PageDTO pdto = null;
+		
 		switch(cmd) {
 		case "allList":
 			pageNum = request.getParameter("pageNum");
@@ -75,10 +78,10 @@ public class BController extends HttpServlet {
 			list = bservice.getListWithPaging(cri);
 			
 			// 전체 게시글 수 파악
-			int total = bservice.getTotalCount();
+			total = bservice.getTotalCount();
 			
 			// pateDTO 객체 생성
-			PageDTO pdto = new PageDTO(cri, total);
+			pdto = new PageDTO(cri, total);
 						
 			// 게시글 및 페이징 객체를 request객체로 전달
 			request.setAttribute("pageNum", parsePageNum);
@@ -140,6 +143,55 @@ public class BController extends HttpServlet {
 			bservice.deletebbs(b_idx);
 			isForward = false;
 			path = "BController?cmd=allList";
+			break;
+			
+		// 게시글 검색
+		case "searchbbs":
+			pageNum = request.getParameter("pageNum");
+			// pageNum 값을 URL을 통해 받아왔다면 그 값을 저장
+			if(pageNum != null) {
+				parsePageNum = Integer.parseInt(pageNum);
+			}
+			// pageNum 값을 URL을 통해 받지 못했다면 1페이지로 이동
+			else {
+				parsePageNum = 1;
+			}
+			
+			// cri 객체에 parsePageNum 저장
+			cri.setPageNum(parsePageNum);
+			String searchType = request.getParameter("searchType");
+			String keyword = request.getParameter("keyword");
+			if(keyword == "") {
+				isForward = false;
+				path = "BController?cmd=allList";
+			}
+			else {
+				cri.setKeyword(keyword);
+				switch(searchType) {
+				case "writer":
+					list = bservice.searchbbsWithWriter(cri);
+					total = bservice.searchbbsWithWriterCount(keyword);
+					pdto = new PageDTO(cri, total);
+					break;
+				case "title":
+					list = bservice.searchbbsWithTitle(cri);
+					total = bservice.searchbbsWithTitleCount(keyword);
+					pdto = new PageDTO(cri, total);
+					break;
+				case "content":
+					list = bservice.searchbbsWithContent(cri);
+					total = bservice.searchbbsWithContentCount(keyword);
+					pdto = new PageDTO(cri, total);
+					break;
+				}
+				request.setAttribute("searchType", searchType);
+				request.setAttribute("keyword", keyword);
+				request.setAttribute("pageNum", parsePageNum);
+				request.setAttribute("list", list);
+				request.setAttribute("pageMaker", pdto);
+				
+				path = "bbs/searchList.jsp";
+			}
 			break;
 		}
 		

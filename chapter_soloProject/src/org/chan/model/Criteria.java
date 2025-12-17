@@ -3,7 +3,16 @@ package org.chan.model;
 public class Criteria {
 	private int pageNum;
 	private int amount;
+	private String keyword;
 	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public Criteria() {	}
 
 	public Criteria(int pageNum, int amount) {

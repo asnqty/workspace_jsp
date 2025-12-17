@@ -51,4 +51,40 @@ public class BServiceImpl implements BService{
 	public int deletebbs(int b_idx) {
 		return bDao.deletebbs(b_idx);
 	}
+	
+	// 작성자 페이징
+	@Override
+	public List<BVO> searchbbsWithWriter(Criteria cri) {
+		return bDao.searchbbsWithWriter(cri);
+	}
+	
+	// 작성자 게시글
+	@Override
+	public int searchbbsWithWriterCount(String keyword) {
+		return bDao.searchbbsWithWriterCount(keyword);
+	}
+	
+	// 제목 페이징
+	@Override
+	public List<BVO> searchbbsWithTitle(Criteria cri) {
+		return bDao.searchbbsWithTitle(cri);
+	}
+	
+	// 제목 게시글
+	@Override
+	public int searchbbsWithTitleCount(String keyword) {
+		return bDao.searchbbsWithTitleCount(keyword);
+	}
+	
+	// 내용 페이징
+	@Override
+	public List<BVO> searchbbsWithContent(Criteria cri) {
+		return bDao.searchbbsWithContent(cri);
+	}
+	
+	// 내용 게시글
+	@Override
+	public int searchbbsWithContentCount(String keyword) {
+		return bDao.searchbbsWithContentCount(keyword);
+	}
 }

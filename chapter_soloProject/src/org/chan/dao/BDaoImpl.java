@@ -78,4 +78,40 @@ public class BDaoImpl implements BDao{
 		}
 		return result;
 	}
+	
+	// 작성자 페이징
+	@Override
+	public List<BVO> searchbbsWithWriter(Criteria cri) {
+		return getSqlSession().selectList("search_bbs_with_writer", cri);
+	}
+	
+	// 작성자 게시글 수
+	@Override
+	public int searchbbsWithWriterCount(String keyword) {
+		return getSqlSession().selectOne("search_bbs_with_writer_count", keyword);
+	}
+	
+	// 제목 페이징
+	@Override
+	public List<BVO> searchbbsWithTitle(Criteria cri) {
+		return getSqlSession().selectList("search_bbs_with_title", cri);
+	}
+		
+	// 제목 게시글 수
+	@Override
+	public int searchbbsWithTitleCount(String keyword) {
+		return getSqlSession().selectOne("search_bbs_with_title_count", keyword);
+	}
+	
+	// 내용 페이징
+	@Override
+	public List<BVO> searchbbsWithContent(Criteria cri) {
+		return getSqlSession().selectList("search_bbs_with_content", cri);
+	}
+	
+	// 내용 게시글 수
+	@Override
+	public int searchbbsWithContentCount(String keyword) {
+		return getSqlSession().selectOne("search_bbs_with_content_count", keyword);
+	}
 }

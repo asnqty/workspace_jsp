@@ -26,4 +26,22 @@ public interface BService {
 	
 	// 게시글 삭제
 	public int deletebbs(int b_idx);
+	
+	// 작성자 게시글 가져오기
+	public List<BVO> searchbbsWithWriter(Criteria cri);
+			
+	// 작성자 게시글 수 파악
+	public int searchbbsWithWriterCount(String keyword);
+			
+	// 제목 게시글 가져오기
+	public List<BVO> searchbbsWithTitle(Criteria cri);
+			
+	// 제목 게시글 수 파악
+	public int searchbbsWithTitleCount(String keyword);
+			
+	// 내용 게시글 가져오기
+	public List<BVO> searchbbsWithContent(Criteria cri);
+			
+	// 내용 게시글 수 파악
+	public int searchbbsWithContentCount(String keyword);
 }

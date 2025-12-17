@@ -16,6 +16,7 @@ import org.chan.service.CService;
 import org.chan.service.CServiceImpl;
 import org.chan.service.MService;
 import org.chan.service.MServiceImpl;
+import org.chan.vo.BCVO;
 import org.chan.vo.BVO;
 import org.chan.vo.MVO;
 
@@ -99,6 +100,8 @@ public class MController extends HttpServlet {
 			List<BVO> list = bservice.getListWithUser(writer);
 			request.setAttribute("list", list);
 			// cservice에서 회원이 작성한 댓글 전부 가져오기
+			List<BCVO> clist = cservice.getListWithUser(writer);
+			request.setAttribute("clist", clist);
 			path = "member/myPage.jsp";
 			break;
 		// 로그아웃

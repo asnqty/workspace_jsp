@@ -12,6 +12,8 @@
 	<div>
 		<h1>게시판</h1>
 		<input type="hidden" id="pageNum" value="${pageNum }">
+		<input type="hidden" id="searchType" value="${searchType }">
+		<input type="hidden" id="keyword" value="${keyword }">
 		<table>
 			<c:choose>
 				<c:when test="${not empty sessionScope.mName}">
@@ -38,7 +40,7 @@
 								<tr>
 									<td>${bvo.b_idx }</td>
 									<td>
-										<a href="BController?cmd=view&b_idx=${bvo.b_idx}&pageNum=${pageNum}">
+										<a href="BController?cmd=view&b_idx=${bvo.b_idx}&pageNum=1">
 											${bvo.title }
 										</a>
 									</td>
@@ -59,7 +61,7 @@
 	</div>
 	
 	<div class="page-wrap">
-	   <ul class="page-nation">
+	   <ul class="page-nations">
 	      <c:if test="${pageMaker.prev }">
 	         <li class="previous">
 	            <a href="${pageMaker.startPage-1}"> &lt; </a>
