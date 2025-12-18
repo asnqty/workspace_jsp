@@ -68,8 +68,7 @@ function showCommentList(){
 
     	cList.forEach(cvo =>{
         	msg += `<tr>`;
-        	msg += `<td>${cvo.writer}</td>`;
-        	msg += `<td><input type="hidden" name="c_idx" value="${cvo.c_idx}"</td>`;
+        	msg += `<td>${cvo.writer}<input type="hidden" name="c_idx" value="${cvo.c_idx}"</td>`;
         	msg += `<td>${cvo.content}</td>`;
         	msg += `<td>${myTime(cvo.reg_date)}</td>`;
 
@@ -77,6 +76,8 @@ function showCommentList(){
         	if(cvo.isMine){
            		msg += `<td>
                         	<button type="button" onclick="updateComment(${cvo.c_idx})">수정</button>
+                  		</td>`;
+				msg += `<td>
            				 	<button type="button" onclick="deleteComment(${cvo.c_idx})">삭제</button>
                   		</td>`;
         	} else {

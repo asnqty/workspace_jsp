@@ -114,4 +114,14 @@ public class BDaoImpl implements BDao{
 	public int searchbbsWithContentCount(String keyword) {
 		return getSqlSession().selectOne("search_bbs_with_content_count", keyword);
 	}
+	
+	// 조회수 증가
+	@Override
+	public int increaseHit(int b_idx) {
+		int result = getSqlSession().update("increase_hit", b_idx);
+		if(result > 0) {
+			getSqlSession().commit();
+		}
+		return result;
+	}
 }

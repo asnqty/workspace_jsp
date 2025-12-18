@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/updatePage.css">
 </head>
 <body>
 	<div>
@@ -19,7 +20,7 @@
 					<tr>
 						<th>현재 비밀번호</th>
 						<td><input type="password" id="mPw" name="mPw"></td>
-						<button id="validatemPwBtn" type="button">비밀번호 확인</button>
+						<td><button id="validatemPwBtn" type="button">비밀번호 확인</button></td>
 					</tr>
 					<tr>
 						<th>새 비밀번호</th>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="css/updatebbsPage.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><input type="text" id="content" name="content" value="${bvo.content}"></td>
+						<td><textarea rows="10" cols="80" id="content" name="content">${bvo.content}</textarea></td>
 					</tr>
 					<tr>
 						<td colspan="3" id="btn">

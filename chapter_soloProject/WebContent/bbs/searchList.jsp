@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/allList.css">
+<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
 	<jsp:include page="/member/main.jsp"/> <br>
@@ -17,7 +19,7 @@
 		<table>
 			<c:choose>
 				<c:when test="${not empty sessionScope.mName}">
-					<thead>
+					<thead style="background-color: white">
 						<tr>
 							<td colspan="5"><button id="moveInsertbbsBtn" type="button">게시글 작성</button></td>
 						</tr>
@@ -78,31 +80,33 @@
 	   </ul>
 	</div>		
 	
-	<form method="get" action="BController">
-    <input type="hidden" name="cmd" value="searchbbs">
-
-    <select name="searchType">
-        <option value="writer"
-            <c:if test="${param.searchType == 'writer'}">selected</c:if>>
-            작성자
-        </option>
-        <option value="title"
-            <c:if test="${param.searchType == 'title'}">selected</c:if>>
-            제목
-        </option>
-        <option value="content"
-            <c:if test="${param.searchType == 'content'}">selected</c:if>>
-            내용
-        </option>
-    </select>
-
-    <input type="text"
-           name="keyword"
-           value="${param.keyword}"
-           placeholder="검색어 입력">
-
-    <button type="submit">검색</button>
-</form>
+	<div>
+		<form method="get" action="BController">
+		    <input type="hidden" name="cmd" value="searchbbs">
+		
+		    <select name="searchType">
+		        <option value="writer"
+		            <c:if test="${param.searchType == 'writer'}">selected</c:if>>
+		            작성자
+		        </option>
+		        <option value="title"
+		            <c:if test="${param.searchType == 'title'}">selected</c:if>>
+		            제목
+		        </option>
+		        <option value="content"
+		            <c:if test="${param.searchType == 'content'}">selected</c:if>>
+		            내용
+		        </option>
+		    </select>
+		
+		    <input type="text"
+		           name="keyword"
+		           value="${param.keyword}"
+		           placeholder="검색어 입력">
+		
+		    <button type="submit">검색</button>
+		</form>
+	</div>
 </body>
 <script type="text/javascript" src="js/bbs.js"></script>
 </html>

@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/view.css">
 </head>
 <body>
 	<jsp:include page="/member/main.jsp"/> <br>
 	<div>
 		<h1>${bvo.b_idx }번 게시글</h1>
 		<form method="post">
-			<table class="bbs">
+			<table class="bbs" cellspacing="0">
 				<tbody>
 					<tr>
 						<th>작성자</th>
@@ -29,7 +30,7 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td colspan="3">${bvo.content }</td>
+						<td colspan="3" id="content">${bvo.content }</td>
 					</tr>
 					<c:choose>
 						<c:when test="${bvo.writer eq sessionScope.mName}">
@@ -56,7 +57,7 @@
 		<c:choose>
 			<c:when test="${not empty sessionScope.mName}">
 				<form method="post">
-					<table class="insertComment">
+					<table class="insertComment" cellspacing="0">
 						<tbody>
 							<tr>
 								<th>댓글 내용</th>
@@ -79,9 +80,9 @@
 		</c:choose>
 		
 		<form >
-			<table class="viewComment">
+			<table class="viewComment" cellspacing="0">
 				<thead>
-					<tr>
+					<tr id="comment">
 						<th>작성자</th>
 						<th>내용</th>
 						<th>작성일</th>

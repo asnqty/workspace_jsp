@@ -84,15 +84,15 @@ function join(mf){
 	let mPw = mf.mPw;
 	let mName = mf.mName;
 	
-	if(mId.value == ''){
+	if(mId.value.trim() === ""){
 		alert("아이디를 입력해주세요");
 		return;
 	}
-	if(mPw.value == ''){
+	if(mPw.value.trim() === ""){
 		alert("비밀번호를 입력해주세요");
 		return;
 	}
-		if(mName.value == ''){
+		if(mName.value.trim() === ""){
 		alert("닉네임을 입력해주세요");
 		return;
 	}
@@ -109,34 +109,41 @@ function join(mf){
 // 중복된 아이디 여부 확인 함수
 function validatemId(){
 	let target = mf.mId;
+	console.log(target.value);
+	if(target.value.trim() === ""){
+		alert("아이디를 입력해주세요.")
+	}
+	else{
+		const params = {
+	   		cmd : 'validatemId',
+	    	mId : target.value
+	  	}
 	
-	const params = {
-   		cmd : 'validatemId',
-    	mId : target.value
-  	}
-
-	const queryString = Object.keys(params).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(params[key])).join('&');
-
-	fetch(`MAsyncController?${queryString}`)
-    .then(response => response.json())
-    .then(data =>{
-      if(data.result == 1){
-		alert("중복된 아이디입니다.")
-		mIdCk = false;
-		return;
-      }
-		else if (data.result == 0){
-				alert("사용할 수 있는 아이디입니다.");
-				mIdCk = true;
-			}
-    })  
-    .catch(err => console.log(err))
+		const queryString = Object.keys(params).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(params[key])).join('&');
+	
+		fetch(`MAsyncController?${queryString}`)
+	    .then(response => response.json())
+	    .then(data =>{
+	      if(data.result == 1){
+			alert("중복된 아이디입니다.")
+			mIdCk = false;
+	      }
+			else if (data.result == 0){
+					alert("사용할 수 있는 아이디입니다.");
+					mIdCk = true;
+				}
+	    })  
+	    .catch(err => console.log(err))
+	}
 }
 
 // 중복된 닉네임 여부 확인 함수
 function validatemName(){
 	let target = mf.mName;
-	
+	if(target.value.trim() === ""){
+		alert("닉네임을 입력해주세요.")
+	}
+	else{
 	const params = {
 		cmd : 'validatemName',
 		mName : target.value
@@ -158,6 +165,7 @@ function validatemName(){
 			}
     })  
     .catch(err => console.log(err))
+	}
 }
 
 // 로그인
@@ -165,11 +173,11 @@ function login(){
 	let mId = f.mId;
 	let mPw = f.mPw;
 	
-	if(mId.value == ''){
+	if(mId.value.trim() === ""){
 		alert("아이디를 입력해주세요");
 		return;
 	}
-	if(mPw.value == ''){
+	if(mPw.value.trim() === ""){
 		alert("비밀번호를 입력해주세요");
 		return;
 	}

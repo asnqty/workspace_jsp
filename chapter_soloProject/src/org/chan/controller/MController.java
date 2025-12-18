@@ -79,6 +79,8 @@ public class MController extends HttpServlet {
 			break;
 		// 로그인
 		case "login":
+			session.invalidate();
+			session = request.getSession();
 			mvo = new MVO();
 			mvo.setmId(request.getParameter("mId"));
 			mvo.setmPw(request.getParameter("mPw"));
@@ -106,7 +108,7 @@ public class MController extends HttpServlet {
 			break;
 		// 로그아웃
 		case "logout":
-			session.removeAttribute("mName");
+			session.invalidate();
 			isForward = false;
 			path = "BController?cmd=allList";
 			break;
@@ -135,7 +137,7 @@ public class MController extends HttpServlet {
 		case "deleteMember":
 			mName = (String) session.getAttribute("mName");
 			mservice.deleteMember(mName);
-			session.removeAttribute("mName");
+			session.invalidate();
 			isForward = false;
 			path = "BController?cmd=allList";
 			break;

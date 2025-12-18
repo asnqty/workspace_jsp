@@ -44,4 +44,7 @@ public interface BDao {
 		
 	// 내용 게시글 수 파악
 	public int searchbbsWithContentCount(String keyword);
+	
+	// 조회수를 증가시키는 함수
+	public int increaseHit(int b_idx);
 }

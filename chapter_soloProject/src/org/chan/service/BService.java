@@ -1,6 +1,7 @@
 package org.chan.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.chan.model.Criteria;
 import org.chan.vo.BVO;
@@ -44,4 +45,7 @@ public interface BService {
 			
 	// 내용 게시글 수 파악
 	public int searchbbsWithContentCount(String keyword);
+	
+	// 조회수 증가
+	public int increaseHit(int b_idx, Set<Integer> viewSet);
 }

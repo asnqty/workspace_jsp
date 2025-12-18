@@ -1,7 +1,9 @@
 package org.chan.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,6 +57,9 @@ public class BController extends HttpServlet {
 		
 		// 로그인 확인을 위한 session 객체
 		HttpSession session = request.getSession();
+		
+		String searchType = null;
+		String keyword = null;
 		
 		int total = 0;
 		PageDTO pdto = null;
@@ -111,6 +116,26 @@ public class BController extends HttpServlet {
 		// 게시글 내용 보기
 		case "view" :
 			b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			searchType = request.getParameter("searchType");
+			keyword = request.getParameter("keyword");
+			
+			if(searchType != null && keyword != null) {
+				request.setAttribute("searchType", searchType);
+				request.setAttribute("keyword", keyword);
+			}
+			
+			// 조회수를 증가시키기 위한 session에 저장할 set
+			Set<Integer> viewSet = (Set<Integer>) session.getAttribute("viewbbsSet");
+
+			// session에 set이 없었다면 생성
+			if (viewSet == null) {
+				viewSet = new HashSet<>();
+				session.setAttribute("viewbbsSet", viewSet);
+			}
+			
+			// bservice에 글 번호와, set을 던져주고 조회수를 증가시킴
+			bservice.increaseHit(b_idx, viewSet);
+			
 			bvo = bservice.getbbs(b_idx);
 			request.setAttribute("bvo", bvo);
 			request.setAttribute("pageNum", request.getParameter("pageNum"));
@@ -159,8 +184,8 @@ public class BController extends HttpServlet {
 			
 			// cri 객체에 parsePageNum 저장
 			cri.setPageNum(parsePageNum);
-			String searchType = request.getParameter("searchType");
-			String keyword = request.getParameter("keyword");
+			searchType = request.getParameter("searchType");
+			keyword = request.getParameter("keyword");
 			if(keyword == "") {
 				isForward = false;
 				path = "BController?cmd=allList";

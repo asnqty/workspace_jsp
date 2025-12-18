@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 	<div>
@@ -14,10 +15,8 @@
 				<tbody>
 					<tr>
 						<th>아이디</th>
-						<td>
-							<input type="text" id="mId" name="mId">
-							<button id="mIdCkBtn" type="button">아이디 중복확인</button>
-						</td>
+						<td><input type="text" id="mId" name="mId"></td>
+						<td><button id="mIdCkBtn" type="button">아이디 중복확인</button></td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
@@ -26,7 +25,7 @@
 					<tr>
 						<th>닉네임</th>
 						<td><input type="text" id="mName" name="mName"></td>
-						<button id="mNameCkBtn" type="button">닉네임 중복확인</button>
+						<td><button id="mNameCkBtn" type="button">닉네임 중복확인</button></td>
 					</tr>
 					<tr>
 						<td colspan="3" id="btn">

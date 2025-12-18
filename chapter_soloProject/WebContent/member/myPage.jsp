@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/allList.css">
 </head>
 <body>
 	<div>
@@ -15,7 +16,7 @@
 			<input type="hidden" name="cmd" value="123">
 		</form>
 		<table>
-			<thead>
+			<thead style="background-color: white">
 				<tr>
 					<td colspan="5">
 						<button id="moveUpdateMemberPageBtn" type="button">회원 정보 수정</button>

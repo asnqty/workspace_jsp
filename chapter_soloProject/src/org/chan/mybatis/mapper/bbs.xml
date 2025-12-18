@@ -101,4 +101,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="search_bbs_with_title_count" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM project_bbs_t WHERE title LIKE '%' || #{keyword} || '%'
 	</select>
+	
+	<!-- 조회수 증가를 위한 쿼리 -->
+	<update id="increase_hit" parameterType="int">
+		UPDATE project_bbs_t SET hit = hit + 1 WHERE b_idx=#{b_idx}
+	</update>
 </mapper>

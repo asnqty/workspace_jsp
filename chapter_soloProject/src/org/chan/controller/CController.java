@@ -67,6 +67,8 @@ public class CController extends HttpServlet {
 
 			List<Map<String, Object>> resultList = new ArrayList<>();
 
+			// 댓글의 작성자와 로그인 된 유저의 닉네임을 비교하여 댓글의 수정 삭제 버튼을 보일지 말지 결정하기 위한
+			// isMine 필드가 CVO에는 없어서 map에 담아서 정보를 보내는 과정
 		    for (CVO cvo1 : cList) {
 		        Map<String, Object> map = new HashMap<>();
 		        map.put("c_idx", cvo1.getC_idx());

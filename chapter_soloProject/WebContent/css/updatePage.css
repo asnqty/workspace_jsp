@@ -1,0 +1,27 @@
+div{
+	width: 600px;
+	margin:auto;
+	text-align: center;
+}
+table{
+	width: 600px;
+}
+th{
+	width: 150px;
+	background-color: cornflowerblue;
+	color: white;
+}
+td{
+	width: 300px;
+	text-align: left;
+}
+input{
+	width: 280px;
+}
+button {
+	background-color: cornflowerblue;
+	color: white;
+	border-color: cornflowerblue;
+	border-radius: 5px;
+	height: 25px;
+}
